@@ -1,9 +1,9 @@
-<div ng-include="'partials/navbar'"></div>
+<div ng-include="'partials/navbar.html'"></div>
 
-<div class="jumbotron">
+<div class="jumbotron" ng-hide="currentUser">
   <h1 id = "titleText"> Welcome to FloppyPaddlePingPong <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
   <p class="lead">
-    <img id = "homeIcon" src="images/floppypaddles.png"><br>
+    <img id = "homeIcon" src="images/floppyp.png"><br>
     Please signup/login to enter the tournament.
   </p>
   <div class = "inlineButtons">
@@ -12,10 +12,12 @@
   </div>
 </div>
 
-<div class="row marketing">
-  <div ng-repeat="thing in awesomeThings">
-      <h4>{{thing.name}}</h4>
-      <p>{{thing.info}}</p>
+<div class="row marketing" ng-show="currentUser">
+  <h1>{{currentUser.name}}</h1>
+  <h2> Current Tournament Rankings </h2>
+  <div ng-repeat="user in awesomeUsers | orderBy: '-gamesPlayed'">
+      <h4>{{user.name}}</h4>
+      <p>Number of games played: {{user.gamesPlayed}}</p>
   </div>
 </div>
 

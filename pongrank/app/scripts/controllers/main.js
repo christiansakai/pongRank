@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('pongrankApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $http.get('/api/awesomeThings').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
+var app =angular.module('pongrankApp')
+  app.controller('MainCtrl', function ($scope, $http) {
+    $http.get('/api/awesomeUsers').success(function(awesomeUsers) {
+      $scope.awesomeUsers = awesomeUsers;
     });
   });

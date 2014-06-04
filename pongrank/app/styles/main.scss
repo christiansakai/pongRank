@@ -12,6 +12,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 #titleText {
   font-size: 280%;
+  padding-top: 0;
 }
 
 .inlineButtons {
@@ -20,8 +21,8 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 }
 
 #homeIcon {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 240px;
 }
 
 /* Space out content a bit */

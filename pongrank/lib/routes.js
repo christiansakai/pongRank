@@ -14,7 +14,10 @@ module.exports = function(app) {
   // Server API Routes
   app.route('/api/awesomeThings')
     .get(api.awesomeThings);
-  
+
+  app.route('/api/awesomeUsers')
+    .get(api.awesomeUsers);
+
   app.route('/api/users')
     .post(users.create)
     .put(users.changePassword);
