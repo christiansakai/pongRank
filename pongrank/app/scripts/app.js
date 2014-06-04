@@ -4,7 +4,10 @@ angular.module('pongrankApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.bootstrap',
+  'pongrankAppChallenge',
+  'pongrankAppModalInstance'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
@@ -19,6 +22,10 @@ angular.module('pongrankApp', [
       .when('/signup', {
         templateUrl: 'partials/signup',
         controller: 'SignupCtrl'
+      })
+      .when('/challenge/:opponent', {
+        templateUrl: 'partials/challenge',
+        controller: 'ChallengeCtrl'
       })
       .otherwise({
         redirectTo: '/'

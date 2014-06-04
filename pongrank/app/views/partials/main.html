@@ -13,11 +13,16 @@
 </div>
 
 <div class="row marketing" ng-show="currentUser">
-  <h1>{{currentUser.name}}</h1>
   <h2> Current Tournament Rankings </h2>
   <div ng-repeat="user in awesomeUsers | orderBy: '-gamesPlayed'">
-      <h4>{{user.name}}</h4>
+      <a href = '/challenge/{{user.name}}'>
+        <button id="challengebtn" ng-hide= "user.name==currentUser.name" class="btn btn-success btn-sm inlineButtons" type="button"> Challenge </button>
+      </a>
+      <h4 ng-class="{active: user.name==currentUser.name}">{{user.name}}</h4>
       <p>Number of games played: {{user.gamesPlayed}}</p>
+      <p>Wins: {{user.wins}} </p>
+      <p>Losses: {{user.losses}}</p>
+      <br>
   </div>
 </div>
 

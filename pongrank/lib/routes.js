@@ -15,14 +15,22 @@ module.exports = function(app) {
   app.route('/api/awesomeThings')
     .get(api.awesomeThings);
 
+  app.route('/api/recordWin/?')
+    .post(api.userWin);
+
+  app.route('/api/recordLoss/?')
+    .post(api.userLoss);
+
   app.route('/api/awesomeUsers')
     .get(api.awesomeUsers);
 
   app.route('/api/users')
     .post(users.create)
     .put(users.changePassword);
+
   app.route('/api/users/me')
     .get(users.me);
+
   app.route('/api/users/:id')
     .get(users.show);
 
