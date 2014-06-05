@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('pongrankAppModalInstance', [])
-  .controller('ModalInstanceCtrl', function ($scope, $modalInstance, $http, items) {
+  .controller('ModalInstanceCtrl', function ($scope, $modalInstance, $routeParams, $http, items) {
+
+$scope.opponent = $routeParams.opponent;
 
   $scope.items = items;
   $scope.selected = {
@@ -13,11 +15,19 @@ angular.module('pongrankAppModalInstance', [])
     .success(function(user) {
 
     })
+    $http.post('/api/recordLoss/?name=' + $scope.opponent)
+    .success(function(user) {
+
+    })
     $modalInstance.close($scope.selected.item);
   };
 
 $scope.loss = function () {
     $http.post('/api/recordLoss/?name=' + $scope.currentUser.name)
+    .success(function(user) {
+
+    })
+    $http.post('/api/recordWin/?name=' + $scope.opponent)
     .success(function(user) {
 
     })

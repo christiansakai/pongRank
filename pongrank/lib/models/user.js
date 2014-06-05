@@ -10,7 +10,10 @@ var authTypes = ['github', 'twitter', 'facebook', 'google'];
  * User Schema
  */
 var UserSchema = new Schema({
-  name: String,
+  name:  {
+    type: String,
+    index: true
+  },
   email: { type: String, lowercase: true },
   role: {
     type: String,
@@ -19,10 +22,6 @@ var UserSchema = new Schema({
   hashedPassword: String,
   provider: String,
   salt: String,
-  gamesPlayed: {
-    type: Number,
-    default: 0
-  },
   wins: {
     type: Number,
     default: 0
@@ -75,6 +74,25 @@ UserSchema
 /**
  * Validations
  */
+
+// Validate name is not taken
+UserSchema
+  .path('name')
+  .validate(function(value, respond) {
+    var self = this;
+    this.constructor.findOne({name: value}, function(err, user) {
+      if(err) throw err;
+      if(user) {
+        if(self.id === user.id) return respond(true);
+        return respond(false);
+      }
+      respond(true);
+    });
+}, 'The specified name is already in use.');
+
+var validatePresenceOf = function(value) {
+  return value && value.length;
+};
 
 // Validate empty email
 UserSchema

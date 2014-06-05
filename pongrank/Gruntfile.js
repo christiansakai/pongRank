@@ -468,7 +468,7 @@ module.exports = function (grunt) {
 
     if (target === 'debug') {
       return grunt.task.run([
-        'clean:server',
+        //'clean:server',
         'bower-install',
         'concurrent:server',
         'autoprefixer',
@@ -477,7 +477,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
+      //'clean:server',
       'bower-install',
       'concurrent:server',
       'autoprefixer',
@@ -502,7 +502,7 @@ module.exports = function (grunt) {
 
     else if (target === 'client') {
       return grunt.task.run([
-        'clean:server',
+        //'clean:server',
         'concurrent:test',
         'autoprefixer',
         'karma'
