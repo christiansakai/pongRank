@@ -8,17 +8,22 @@ var mongoose = require('mongoose'),
  * Create user
  */
 exports.create = function (req, res, next) {
-  var newUser = new User(req.body);
-  newUser.provider = 'local';
-  newUser.save(function(err) {
-    if (err) return res.json(400, err);
-    
+  User.count({}, function (err, count) {
+    var attribute = req.body;
+    attribute.rank = count + 1;
+    var newUser = new User(attribute);
+    console.log(newUser, attribute);
+      newUser.provider = 'local';
+      newUser.save(function(err) {
+      if (err) return res.json(400, err);
+
     req.logIn(newUser, function(err) {
       if (err) return next(err);
 
       return res.json(req.user.userInfo);
     });
   });
+  })
 };
 
 /**

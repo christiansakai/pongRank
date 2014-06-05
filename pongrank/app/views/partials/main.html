@@ -14,7 +14,7 @@
 
 <div class="row marketing" ng-show="currentUser">
   <h2> Current Tournament Rankings </h2>
-  <div ng-repeat="user in awesomeUsers | orderBy: '-wins'">
+  <div ng-repeat="user in awesomeUsers | orderBy: 'rank'">
       <a href = '/challenge/{{user.name}}'>
         <button id="challengebtn" ng-hide= "user.name==currentUser.name" class="btn btn-success btn-sm inlineButtons" type="button"> Challenge </button>
       </a>
@@ -23,6 +23,7 @@
       <p>Wins: {{user.wins}} </p>
       <p>Losses: {{user.losses}}</p>
       <p>Win Pct. {{user.wins / (user.wins + user.losses) | number: 3}}</p>
+      <p> Rank: {{user.rank}} </p>
       <br>
   </div>
 </div>

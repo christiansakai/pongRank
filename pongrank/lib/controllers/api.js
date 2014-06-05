@@ -28,15 +28,19 @@ exports.awesomeUsers = function(req, res) {
 };
 
 exports.userWin = function (req, res) {
-
-  return User.findOneAndUpdate(req.query, {$inc:{wins: 1}} ,function (err, user) {
+  User.findOneAndUpdate(req.query, {$inc:{wins: 1}} ,function (err, user) {
+    res.end();
+  });
+  return User.findOneAndUpdate(req.query, {$inc:{rank: -1}} ,function (err, user) {
     res.end();
   });
 };
 
 exports.userLoss = function (req, res) {
-  return User.findOneAndUpdate(req.query, {$inc:{losses: 1}} ,function (err, user) {
-
+  User.findOneAndUpdate(req.query, {$inc:{losses: 1}} ,function (err, user) {
+    res.end();
+  });
+  return User.findOneAndUpdate(req.query, {$inc:{rank: 1}} ,function (err, user) {
     res.end();
   });
 };
