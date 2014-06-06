@@ -12,7 +12,6 @@ exports.create = function (req, res, next) {
     var attribute = req.body;
     attribute.rank = count + 1;
     var newUser = new User(attribute);
-    console.log(newUser, attribute);
       newUser.provider = 'local';
       newUser.save(function(err) {
       if (err) return res.json(400, err);
@@ -23,7 +22,7 @@ exports.create = function (req, res, next) {
       return res.json(req.user.userInfo);
     });
   });
-  })
+  });
 };
 
 /**

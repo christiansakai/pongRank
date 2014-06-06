@@ -1,7 +1,7 @@
 <div ng-include="'partials/navbar.html'"></div>
 
-<div class="jumbotron" ng-hide="currentUser">
-  <h1 id = "titleText"> Welcome to FloppyPaddlePingPong <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
+<div class="jumbotron" ng-hide="!!currentUser">
+  <h1 id = "titleText"> Welcome to FloppyPaddlePingPong <span ng-show="!!currentUser">{{ currentUser.name }}</span>!</h1>
   <p class="lead">
     <img id = "homeIcon" src="images/floppyp.png"><br>
     Please signup/login to enter the tournament.
@@ -14,9 +14,10 @@
 
 <div class="row marketing" ng-show="currentUser">
   <h2> Current Tournament Rankings </h2>
+
   <div ng-repeat="user in awesomeUsers | orderBy: 'rank'">
       <a href = '/challenge/{{user.name}}'>
-        <button id="challengebtn" ng-hide= "user.name==currentUser.name" class="btn btn-success btn-sm inlineButtons" type="button"> Challenge </button>
+        <button id="challengebtn" ng-show= "user.rank==(currentUser.rank-1)" class="btn btn-success btn-sm inlineButtons" type="button"> Challenge </button>
       </a>
       <h4 ng-class="{active: user.name==currentUser.name}">{{user.name}}</h4>
       <p>Number of games played: {{user.wins + user.losses}}</p>

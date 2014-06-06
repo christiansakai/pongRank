@@ -27,6 +27,17 @@ exports.awesomeUsers = function(req, res) {
   });
 };
 
+exports.findCurrent = function (req, res) {
+  return User.findOne(req.query, function (err, user) {
+    console.log(req.params);
+    if (!err) {
+      return res.json(user);
+    } else {
+      return res.send(err);
+    }
+  });
+};
+
 exports.userWin = function (req, res) {
   User.findOneAndUpdate(req.query, {$inc:{wins: 1}} ,function (err, user) {
     res.end();
@@ -36,7 +47,19 @@ exports.userWin = function (req, res) {
   });
 };
 
+exports.opponentWin = function (req, res) {
+  User.findOneAndUpdate(req.query, {$inc:{wins: 1}} ,function (err, user) {
+    res.end();
+  });
+};
+
 exports.userLoss = function (req, res) {
+  return User.findOneAndUpdate(req.query, {$inc:{losses: 1}} ,function (err, user) {
+    res.end();
+  });
+};
+
+exports.opponentLoss = function (req, res) {
   User.findOneAndUpdate(req.query, {$inc:{losses: 1}} ,function (err, user) {
     res.end();
   });

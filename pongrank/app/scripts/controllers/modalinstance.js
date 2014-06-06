@@ -15,7 +15,7 @@ $scope.opponent = $routeParams.opponent;
     .success(function(user) {
 
     })
-    $http.post('/api/recordLoss/?name=' + $scope.opponent)
+    $http.post('/api/recordOppLoss/?name=' + $scope.opponent)
     .success(function(user) {
 
     })
@@ -27,7 +27,7 @@ $scope.loss = function () {
     .success(function(user) {
 
     })
-    $http.post('/api/recordWin/?name=' + $scope.opponent)
+    $http.post('/api/recordOppWin/?name=' + $scope.opponent)
     .success(function(user) {
 
     })

@@ -18,11 +18,23 @@ module.exports = function(app) {
   app.route('/api/recordWin/?')
     .post(api.userWin);
 
+  app.route('/api/recordOppWin/?')
+    .post(api.opponentWin);
+
+  app.route('/api/recordOppLoss/?')
+    .post(api.opponentLoss);
+
   app.route('/api/recordLoss/?')
     .post(api.userLoss);
 
+  app.route('/api/oppLoss/?')
+    .post(api.opponentLoss);
+
   app.route('/api/awesomeUsers')
     .get(api.awesomeUsers);
+
+  app.route('/api/findCurrent/?')
+    .get(api.findCurrent);
 
   app.route('/api/users')
     .post(users.create)
