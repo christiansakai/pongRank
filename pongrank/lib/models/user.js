@@ -21,6 +21,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  telephone: Number,
   hashedPassword: String,
   provider: String,
   salt: String,

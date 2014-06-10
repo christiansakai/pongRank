@@ -8,6 +8,7 @@ angular.module('pongrankApp', [
   'ui.bootstrap',
   'pongrankAppChallenge',
   'pongrankAppModalInstance'
+  // 'pongrankAppModalInstanceNotify'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

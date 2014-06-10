@@ -19,14 +19,27 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   padding-top: 0;
 }
 
+.warning {
+  color: #FF3300;
+}
+
+.danger {
+  color: red;
+  font-weight: bold;
+}
+
 .active {
   font-weight: bold;
-  color: red;
+  color: #0eedf1;
+}
+
+.homePageBtn {
+  color: #0fa9f0;
 }
 
 .inlineButtons {
   display: inline-block;
-  color: green;
+  color: white;
   font-weight: bold;
   font-family: 'Allerta';
 }

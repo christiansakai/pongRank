@@ -12,7 +12,10 @@ var express = require('express'),
     path = require('path'),
     config = require('./config'),
     passport = require('passport'),
-    mongoStore = require('connect-mongo')(session);
+    mongoStore = require('connect-mongo')(session),
+    restify = require('express-restify-mongoose'),
+    mongoose = require('mongoose'),
+    User = mongoose.model('User');
 
 /**
  * Express configuration
@@ -51,6 +54,7 @@ module.exports = function(app) {
   app.use(bodyParser());
   app.use(methodOverride());
   app.use(cookieParser());
+  restify.serve(app, User);
 
   // Persist sessions with mongoStore
   app.use(session({

@@ -13,7 +13,8 @@ angular.module('pongrankApp')
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
-          password: $scope.user.password
+          password: $scope.user.password,
+          telephone: $scope.user.telephone
         })
         .then( function() {
           // Account created, redirect to home

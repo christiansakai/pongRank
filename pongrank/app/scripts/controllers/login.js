@@ -2,12 +2,14 @@
 
 angular.module('pongrankApp')
   .controller('LoginCtrl', function ($scope, Auth, $location) {
-    $scope.user = {};
+    $scope.user = {
+      email: "jesus@jesus",
+      password: "jesus"
+    };
     $scope.errors = {};
 
     $scope.login = function(form) {
       $scope.submitted = true;
-      
       if(form.$valid) {
         Auth.login({
           email: $scope.user.email,

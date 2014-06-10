@@ -18,11 +18,12 @@
   <div ng-repeat="user in awesomeUsers | orderBy: 'rank'">
       <a href = '/challenge/{{user.name}}'>
         <button id="challengebtn" ng-show= "user.rank==(currentUser.rank-1)" class="btn btn-success btn-sm inlineButtons" type="button"> Challenge </button>
+      <button id = "challengebtn" class="btn btn-info btn-sm inlineButtons" ng-hide = "user.name == currentUser.name" ng-click="open(user.name)"> Notify </button>
       </a>
-      <h4 ng-class="{active: user.name==currentUser.name}">{{user.name}}</h4>
-      <p>Number of games played: {{user.wins + user.losses}}</p>
-      <p>Wins: {{user.wins}} </p>
-      <p>Losses: {{user.losses}}</p>
+
+      <h4 ng-class="{active: user.name==currentUser.name}" >{{user.name}}</h4>
+      <!-- <p> Games Played: {{user.wins + user.losses}}</p> -->
+      <p> Record : {{user.wins}} - {{user.losses}}
       <p>Win Pct. {{user.wins / (user.wins + user.losses) | number: 3}}</p>
       <p> Rank: {{user.rank}} </p>
       <br>

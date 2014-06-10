@@ -1,9 +1,14 @@
 'use strict';
 
 angular.module('pongrankAppModalInstance', [])
-  .controller('ModalInstanceCtrl', function ($scope, $modalInstance, $routeParams, $http, items) {
+  .controller('ModalInstanceCtrl', function ($scope, $modalInstance, $routeParams, $modal, $http, items, $location) {
 
-$scope.opponent = $routeParams.opponent;
+  $scope.opponent = $routeParams.opponent;
+
+  $http.get('/api/findCurrent/?name=' + $routeParams.opponent)
+      .success(function(user){
+        $scope.opponentFull = user;
+      });
 
   $scope.items = items;
   $scope.selected = {
@@ -37,4 +42,19 @@ $scope.loss = function () {
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
+
+  $scope.text = function (body) {
+    $scope.opponent = $routeParams.opponent;
+    $http.get('/api/findCurrent/?name=' + $routeParams.opponent)
+        .success(function(user){
+          $scope.opponentFull = user;
+          $http.get('/api/sendText/?number=' + $scope.opponentFull.telephone + '&body=' + body)
+                .success(function(user) {
+                console.log('success');
+                 window.location = '/';
+                })
+        });
+        $modalInstance.close($scope.selected.item);
+  };
+
 });

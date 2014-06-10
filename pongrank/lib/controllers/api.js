@@ -1,21 +1,13 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Thing = mongoose.model('Thing'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    twilio = require('twilio'),
+    client = new twilio.RestClient('ACe9086308697f1104417631bd00487483', '300ddf25982bb860a03a51e10b661576');
 
 /**
- * Get awesome things
+ * Get awesome Users
  */
-exports.awesomeThings = function(req, res) {
-  return Thing.find(function (err, things) {
-    if (!err) {
-      return res.json(things);
-    } else {
-      return res.send(err);
-    }
-  });
-};
 
 exports.awesomeUsers = function(req, res) {
   return User.find(function (err, users) {
@@ -29,7 +21,6 @@ exports.awesomeUsers = function(req, res) {
 
 exports.findCurrent = function (req, res) {
   return User.findOne(req.query, function (err, user) {
-    console.log(req.params);
     if (!err) {
       return res.json(user);
     } else {
@@ -65,5 +56,35 @@ exports.opponentLoss = function (req, res) {
   });
   return User.findOneAndUpdate(req.query, {$inc:{rank: 1}} ,function (err, user) {
     res.end();
+  });
+};
+
+exports.sendText = function (req, res) {
+  console.log(req.query);
+// Pass in parameters to the REST API using an object literal notation. The
+// REST client will handle authentication and response serialzation for you.
+  client.sms.messages.create({
+      to: req.query.number,
+      from:'+16474965796',
+      body: req.query.body
+  }, function(error, message) {
+      // The HTTP request to Twilio will run asynchronously. This callback
+      // function will be called when a response is received from Twilio
+      // The "error" variable will contain error information, if any.
+      // If the request was successful, this value will be "falsy"
+      if (!error) {
+        res.send(200);
+          // The second argument to the callback will contain the information
+          // sent back by Twilio for the request. In this case, it is the
+          // information about the text messsage you just sent:
+          console.log('Success! The SID for this SMS message is:');
+          console.log(message.sid);
+
+          console.log('Message sent on:');
+          console.log(message.dateCreated);
+      } else {
+          res.send(400);
+          console.log('Oops! There was an error.');
+      }
   });
 };

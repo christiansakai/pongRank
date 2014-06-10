@@ -1,11 +1,16 @@
 'use strict';
 
 angular.module('pongrankAppChallenge', ['ui.bootstrap', 'pongrankAppModalInstance'])
-  .controller('ChallengeCtrl', function ($scope, $routeParams, $modal, $log) {
+  .controller('ChallengeCtrl', function ($scope, $routeParams, $modal, $log, $http) {
     // $http.get('api/awesomeUsers').success(function(users) {
     //   $scope.users = users;
     // });
   $scope.opponent = $routeParams.opponent;
+
+    $http.get('/api/findCurrent/?name=' + $routeParams.opponent)
+      .success(function(user){
+        $scope.opponentFull = user;
+      });
 
   $scope.items = ['item1', 'item2', 'item3'];
 
