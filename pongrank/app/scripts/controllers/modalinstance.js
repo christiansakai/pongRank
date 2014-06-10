@@ -41,6 +41,7 @@ $scope.loss = function () {
 
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
+    window.location = '/';
   };
 
   $scope.text = function (body) {

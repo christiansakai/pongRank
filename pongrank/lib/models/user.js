@@ -36,7 +36,12 @@ var UserSchema = new Schema({
   rank: {
     type: Number
   },
-  facebook: {},
+  facebook: {
+    id: String,
+    token: String,
+    email: String,
+    name: String
+  },
   twitter: {},
   github: {},
   google: {}
