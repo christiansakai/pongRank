@@ -59,6 +59,12 @@ exports.opponentLoss = function (req, res) {
   });
 };
 
+exports.addTelephone = function (req, res) {
+  return User.findOneAndUpdate({name: req.query.name}, {$set: { telephone: req.query.body }}, function (err, user) {
+      res.end();
+  });
+};
+
 exports.sendText = function (req, res) {
   console.log(req.query);
 // Pass in parameters to the REST API using an object literal notation. The

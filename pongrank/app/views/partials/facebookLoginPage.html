@@ -1,0 +1,5 @@
+<label>Phone Number {{currentUser.name}}</label>
+    <input type="tel" name="telephone" class="form-control" ng-model="user.telephone"
+               required
+               mongoose-error/>
+<button class="btn btn-lg btn-primary" ng-click="addTelephone(user.telephone)">Sign up!</button>

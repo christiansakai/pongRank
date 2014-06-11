@@ -32,6 +32,9 @@ module.exports = function(app) {
   app.route('/api/recordOppLoss/?')
     .post(api.opponentLoss);
 
+  app.route('/api/addTelephone/?')
+    .post(api.addTelephone);
+
   app.route('/api/awesomeUsers')
     .get(api.awesomeUsers);
 
@@ -62,7 +65,7 @@ module.exports = function(app) {
   app.get('/auth/facebook', passport.authenticate('facebook', {scope : 'email' }));
   app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-          successRedirect : '/',
+          successRedirect : '/facebookLoginPage',
           failureRedirect : '/login'
     }));
 

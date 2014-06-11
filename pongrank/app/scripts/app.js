@@ -7,7 +7,8 @@ angular.module('pongrankApp', [
   'ngRoute',
   'ui.bootstrap',
   'pongrankAppChallenge',
-  'pongrankAppModalInstance'
+  'pongrankAppModalInstance',
+  'pongrankAppTelephone'
   // 'pongrankAppModalInstanceNotify'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
@@ -27,6 +28,10 @@ angular.module('pongrankApp', [
       .when('/challenge/:opponent', {
         templateUrl: 'partials/challenge',
         controller: 'ChallengeCtrl'
+      })
+      .when('/facebookLoginPage', {
+        templateUrl: 'partials/facebookLoginPage',
+        controller: 'TelephoneCtrl'
       })
       .otherwise({
         redirectTo: '/'
