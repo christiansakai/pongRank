@@ -1,8 +1,11 @@
 <div ng-include="'partials/navbar.html'"></div>
+<div class="background-image width100">
+  <div class="container box-outline">
+      <h2> {{currentUser.name}} vs. {{opponent}} </h2>
+      <p> Your Record: {{currentUser.wins}} - {{currentUser.losses}}</p>
 
-  <h2> {{currentUser.name}} vs. {{opponent}} </h2>
-  <p> Your Record: {{currentUser.wins}} - {{currentUser.losses}}</p>
-
-  <button class="btn btn-danger" ng-click="open()"> Play Now!</button>
+      <button class="btn btn-danger" ng-click="open()"> Play Now!</button>
+  </div>
+</div>
 
 

@@ -7,9 +7,9 @@
           <form>
              <p ng-class="{warning: textMsg.body.length > 144, danger: textMsg.body.length > 154}">You have {{160 - textMsg.body.length}} characters remaining! </p>
              <textarea class="form-control" ng-model = "textMsg.body" rows="3" placeholder= "Press 'Text' to send your message"></textarea>
-             <button id="notifybtn" ng-hide = "textMsg.body.length > 160" ng-click="text(textMsg.body)" class= "btn btn-info btn-sm inlineButtons" type="button"> Text </button>
-             <button disabled ng-show = "textMsg.body.length > 160" class="btn btn-info btn-sm inlineButtons"> Text </button>
-             <button class="btn btn-warning btn-sm" ng-click="cancel()">Cancel</button>
+             <button id="notifybtn" ng-hide = "textMsg.body.length > 160" ng-click="text(textMsg.body)" class= "btn btn-info btn-sm" type="button" style = "margin-top: 5px;"> Text </button>
+             <button disabled ng-show = "textMsg.body.length > 160" class="btn btn-info btn-sm" style = "margin-top: 5px;"> Text </button>
+             <button class="btn btn-warning btn-sm" ng-click="cancel()" style = "margin-top: 5px;">Cancel</button>
           </form>
           <!-- </a> -->
         </div>

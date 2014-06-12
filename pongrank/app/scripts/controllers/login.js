@@ -17,7 +17,7 @@ angular.module('pongrankApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+          window.location = "/";
         })
         .catch( function(err) {
           err = err.data;

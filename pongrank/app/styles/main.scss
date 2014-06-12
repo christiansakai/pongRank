@@ -10,9 +10,91 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 }
 /* Main page styling */
 
+.intro-header {
+  padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+  padding-bottom: 50px;
+  color: #f8f8f8;
+  background: url(../images/Ping-Pong-movie.jpg) no-repeat center center;
+  background-size: cover;
+  text-align: center;
+}
+
+.intro-message {
+  position: relative;
+  top: 50px;
+  padding-top: 20%;
+  padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+  margin: 0;
+  font-size: 5em;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.intro-divider {
+  width: 400px;
+  border-top: 1px solid #f8f8f8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.intro-message > h3 {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
 #navBarTitle {
   font-size: 200%;
 }
+
+// MAIN PAGE
+.height100 {
+  height: 100%;
+}
+
+.width100 {
+  width: 100%;
+  left:0;
+}
+
+.background-image {
+  background: url(../images/Ping-Pong-movie.jpg) no-repeat center center;
+  background-size: cover;
+  width:100%;
+  height:100%;
+  position: fixed;
+  top: 0;
+}
+
+
+.box-outline {
+  padding: 20px 30px;
+  border: 1px white;
+  background-color: #aaaaaa;
+  background:rgba(255,255,255,0.75);
+  filter: alpha(opacity=30);
+  border-radius: 25px;
+  position: relative;
+  top: 60px;
+  margin-bottom: 20px;
+}
+
+.box-outline > h1 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.tournament-divider {
+  width: 90%;
+  border-top: 1px solid #f8f8f8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+#user-records {
+  padding-left: 10px;
+}
+
 
 #titleText {
   font-size: 280%;
@@ -30,7 +112,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 .active {
   font-weight: bold;
-  color: #0eedf1;
+  color: #FFFAFA;
 }
 
 .homePageBtn {
@@ -39,14 +121,17 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 .inlineButtons {
   display: inline-block;
+  float:right;
   color: white;
   font-weight: bold;
   font-family: 'Allerta';
+  margin-left: 5px;
 }
 
-#challengebtn {
+.notifyButtons {
+  display: inline-block;
   float: right;
-  text-align: right;
+  margin-bottom: 5px;
 }
 
 #homeIcon {
@@ -56,7 +141,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 /* Space out content a bit */
 body {
-    padding-top: 20px;
+    margin-top: 60px;
     padding-bottom: 20px;
 }
 
@@ -83,11 +168,6 @@ body {
 }
 
 /* Custom page footer */
-.footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
-}
 
 .container-narrow {
   margin: 0 auto;
@@ -96,17 +176,6 @@ body {
 
 .container-narrow > hr {
     margin: 30px 0px;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
 }
 
 /* Supporting marketing content */
@@ -118,6 +187,51 @@ body {
     margin-top: 28px;
 }
 
+                            .btn-sample {
+                              color: #ffffff;
+                              background-color: #626263;
+                              border-color: #514D63;
+                            }
+
+                            .btn-sample:hover,
+                            .btn-sample:focus,
+                            .btn-sample:active,
+                            .btn-sample.active,
+                            .open .dropdown-toggle.btn-sample {
+                              color: #ffffff;
+                              background-color: #29292E;
+                              border-color: #514D63;
+                            }
+
+                            .btn-sample:active,
+                            .btn-sample.active,
+                            .open .dropdown-toggle.btn-sample {
+                              background-image: none;
+                            }
+
+                            .btn-sample.disabled,
+                            .btn-sample[disabled],
+                            fieldset[disabled] .btn-sample,
+                            .btn-sample.disabled:hover,
+                            .btn-sample[disabled]:hover,
+                            fieldset[disabled] .btn-sample:hover,
+                            .btn-sample.disabled:focus,
+                            .btn-sample[disabled]:focus,
+                            fieldset[disabled] .btn-sample:focus,
+                            .btn-sample.disabled:active,
+                            .btn-sample[disabled]:active,
+                            fieldset[disabled] .btn-sample:active,
+                            .btn-sample.disabled.active,
+                            .btn-sample[disabled].active,
+                            fieldset[disabled] .btn-sample.active {
+                              background-color: #626263;
+                              border-color: #514D63;
+                            }
+
+                            .btn-sample .badge {
+                              color: #626263;
+                              background-color: #ffffff;
+                            }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
@@ -134,9 +248,5 @@ body {
     /* Space out the masthead */
     .header {
         margin-bottom: 00px;
-    }
-    /* Remove the bottom border on the jumbotron for visual effect */
-    .jumbotron {
-        border-bottom: 0;
     }
 }

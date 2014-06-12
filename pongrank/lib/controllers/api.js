@@ -59,6 +59,18 @@ exports.opponentLoss = function (req, res) {
   });
 };
 
+exports.checkTelephone = function (req, res) {
+  User.find({name: req.query.name}, function (err, user) {
+    if (typeof user[0].telephone === 'undefined') {
+      res.send(false);
+    } else if (typeof user[0].telephone !== 'undefined') {
+      res.send(true);
+    }
+    // if (user.telephone === )
+  });
+};
+
+
 exports.addTelephone = function (req, res) {
   return User.findOneAndUpdate({name: req.query.name}, {$set: { telephone: req.query.body }}, function (err, user) {
       res.end();

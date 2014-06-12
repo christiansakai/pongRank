@@ -86,7 +86,7 @@ passport.use(new FacebookStrategy({
                         newUser.facebook.id    = profile.id; // set the users facebook id
                         newUser.facebook.token = token; // we will save the token that facebook provides to the user
                         newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
-                        newUser.name  = profile.name.givenName + ' ' + profile.name.familyName+"-"+Math.random().toString(36).substring(2,5); // look at the passport user profile to see how names are returned
+                        newUser.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
                         newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
                         //newUser.telephone =
                         newUser.email = profile.emails[0].value;

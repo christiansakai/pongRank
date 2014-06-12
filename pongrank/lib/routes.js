@@ -32,6 +32,9 @@ module.exports = function(app) {
   app.route('/api/recordOppLoss/?')
     .post(api.opponentLoss);
 
+  app.route('/api/checkTelephone/?')
+    .get(api.checkTelephone);
+
   app.route('/api/addTelephone/?')
     .post(api.addTelephone);
 

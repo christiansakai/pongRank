@@ -25,6 +25,7 @@ angular.module('pongrankAppModalInstance', [])
 
     })
     $modalInstance.close($scope.selected.item);
+    window.location = "/";
   };
 
 $scope.loss = function () {
@@ -37,6 +38,7 @@ $scope.loss = function () {
 
     })
     $modalInstance.close($scope.selected.item);
+    window.location = "/";
   };
 
   $scope.cancel = function () {

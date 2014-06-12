@@ -1,35 +1,46 @@
-<div ng-include="'partials/navbar.html'"></div>
+<div ng-show="currentUser" ng-include="'partials/navbar.html'"></div>
+  <div class="intro-header" ng-hide="currentUser"  style="width:100%; height:100%; position:fixed; left:0;top:0;overflow:hidden;">
+    <div class = "container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                  <h1> Welcome to FloppyPaddlePingPong</h1>
+                  <h3> A ranking system for Fullstack </h3>
+                  <hr class="intro-divider">
+                  <ul class="list-inline intro-social-buttons">
+                    <li><a ng-href="/login" class="btn btn-default btn-lg">Local Login</a></li>
+                    <li><a ng-href="/auth/facebook/" target="_self" class="btn btn-default btn-lg">Facebook Login</a></li>
+                    <li><a ng-href="/signup" class="btn btn-default btn-lg">Signup Here</a></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
 
-<div class="jumbotron" ng-hide="!!currentUser">
-  <h1 id = "titleText"> Welcome to FloppyPaddlePingPong <span ng-show="!!currentUser">{{ currentUser.name }}</span>!</h1>
-  <p class="lead">
-    <img id = "homeIcon" src="images/floppyp.png"><br>
-    Please signup/login to enter the tournament.
-  </p>
-  <div class = "inlineButtons">
-    <a class="btn btn-lg btn-success" ng-href="/login">Login Here!</a>
-    <a class="btn btn-lg btn-success" ng-href="/signup">Signup Here!</a>
+<div ng-show="currentUser" class="">
+  <div class="background-image width100">
+    <div style="overflow:scroll; height:100%">
+        <div class="container box-outline">
+            <h1> Current Tournament Rankings </h1>
+            <hr class="tournament-divider">
+                <div ng-repeat="user in awesomeUsers | orderBy: 'rank'">
+                    <a href = '/challenge/{{user.name}}'>
+                      <button id="challengebtn" ng-show= "user.rank==(currentUser.rank-1)" class="btn btn-success btn-sm inlineButtons" type="button"><span class="glyphicon glyphicon-play"></span> &nbsp Challenge</button>
+                      <button id = "challengebtn" class="inlineButtons btn btn-sample btn-sm" ng-hide = "user.name == currentUser.name" ng-click="open(user.name)"><span class="glyphicon glyphicon-comment"></span> &nbsp Notify </button>
+                    </a>
+                  <h4 ng-class="{active: user.name==currentUser.name}" >{{user.name}}</h4>
+                  <p> Games Played: {{user.wins + user.losses}}</p>
+                  <div id="user-records">
+                    <p> Record : {{user.wins}} - {{user.losses}}
+                    <p>Win Pct. {{user.wins / (user.wins + user.losses) | number: 3}}</p>
+                    <p> Rank: {{user.rank}} </p>
+                    <!-- <p>{{user.telephone}}</p> -->
+                  </div>
+              </div>
+        </div>
+    </div>
   </div>
 </div>
 
-<div class="row marketing" ng-show="currentUser">
-  <h2> Current Tournament Rankings </h2>
 
-  <div ng-repeat="user in awesomeUsers | orderBy: 'rank'">
-      <a href = '/challenge/{{user.name}}'>
-        <button id="challengebtn" ng-show= "user.rank==(currentUser.rank-1)" class="btn btn-success btn-sm inlineButtons" type="button"> Challenge </button>
-      <button id = "challengebtn" class="btn btn-info btn-sm inlineButtons" ng-hide = "user.name == currentUser.name" ng-click="open(user.name)"> Notify </button>
-      </a>
-
-      <h4 ng-class="{active: user.name==currentUser.name}" >{{user.name}}</h4>
-      <!-- <p> Games Played: {{user.wins + user.losses}}</p> -->
-      <p> Record : {{user.wins}} - {{user.losses}}
-      <p>Win Pct. {{user.wins / (user.wins + user.losses) | number: 3}}</p>
-      <p> Rank: {{user.rank}} </p>
-      <br>
-  </div>
-</div>
-
-<div class="footer">
-  <p>♥ Mike Young</p>
-</div>
