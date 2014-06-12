@@ -53,8 +53,9 @@ $scope.loss = function () {
           $scope.opponentFull = user;
           $http.get('/api/sendText/?number=' + $scope.opponentFull.telephone + '&body=' + body)
                 .success(function(user) {
+                alert("Your message was successfully sent to " + $scope.opponentFull.name);
                 console.log('success');
-                 window.location = '/';
+                window.location = '/';
                 })
         });
         $modalInstance.close($scope.selected.item);

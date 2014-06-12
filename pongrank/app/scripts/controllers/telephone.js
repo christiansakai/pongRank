@@ -10,7 +10,7 @@ angular.module('pongrankAppTelephone', [])
         $scope.loadPage = true;
         }
       });
-
+    $scope.cellPhonePattern = /^[0-9]{10}$/g;
     $scope.addTelephone = function (body) {
       $http.post('/api/addTelephone/?name=' + $scope.currentUser.name + '&body=' + $scope.user.telephone)
       .success(function(user) {
