@@ -1,20 +1,24 @@
-<div ng-show="loadPage" class="background-image width100">
+<!-- <div ng-show="loadPage" class="background-image width100">
   <div class="container box-outline">
     <label> Please enter your phone number </label>
         <input type="tel" name="telephone" class="form-control" ng-model="user.telephone" style="margin: 15px;"
                    mongoose-error/>
     <button class="btn btn-primary" ng-click="addTelephone(user.telephone)">Sign up!</button>
   </div>
-</div>
-<!--
-<div class="form-group" ng-class="{ 'has-success': form.cellPhone.$valid && submitted,
-                                         'has-error': form.cellPhone.$invalid && submitted }">
-       <label>Cell Phone</label>
+</div> -->
 
-       <input type="text" name="cellPhone" class="form-control" ng-pattern="cellPhonePattern" ng-model="user.cellPhone"
+<div ng-show="loadPage" class="background-image width100">
+  <div class="container box-outline">
+    <div class="form-group" ng-class="{ 'has-success': form.telephone.$valid && submitted,
+                                         'has-error': form.telephone.$invalid && submitted }">
+       <label>Please enter your phone number</label>
+
+       <input type="tel" name="telephone" class="form-control" ng-model="user.telephone" ng-pattern="cellPhonePattern" style="margin: 15px;"
               required/>
-
+        <button class="btn btn-primary" ng-click="addTelephone(user.telephone)">Sign up!</button>
        <p class="help-block" ng-show="(form.cellPhone.$error.pattern || form.cellPhone.$error.required) && submitted">
-         A valid 10 digit US cell phone is required.
+         A valid 10 digit cell phone number is required.
        </p>
-     </div> -->
+     </div>
+  </div>
+</div>
